@@ -1,0 +1,269 @@
+<vex-secondary-toolbar current="Form Wizard">
+    <vex-breadcrumbs [crumbs]="['Forms', 'Form Wizard']" class="flex-auto"></vex-breadcrumbs>
+
+    <button class="ml-2" color="primary" mat-icon-button type="button">
+        <mat-icon svgIcon="mat:more_vert"></mat-icon>
+    </button>
+</vex-secondary-toolbar>
+
+<div @stagger class="p-6 container">
+    <h2 class="title mb-4 flex items-center">
+        <span @scaleIn
+            class="w-10 h-10 rounded-full text-primary-600 mr-3 flex items-center justify-center bg-primary-600/10">
+            <mat-icon class="icon-sm" svgIcon="mat:description"></mat-icon>
+        </span>
+        <span @fadeInRight class="block">Registro Cliente</span>
+    </h2>
+
+    <div @fadeInUp class="card overflow-hidden">
+        <mat-horizontal-stepper #stepper="matHorizontalStepper" [linear]="true">
+            <ng-template matStepperIcon="edit">
+                <mat-icon svgIcon="mat:done_all"></mat-icon>
+            </ng-template>
+
+            <ng-template matStepperIcon="done">
+                <mat-icon svgIcon="mat:done_all"></mat-icon>
+            </ng-template>
+
+            <mat-step [stepControl]="accountFormGroup">
+                <form [formGroup]="accountFormGroup">
+                    <ng-template matStepLabel>Registro</ng-template>
+
+                    <h2 class="title m-0">Datos principales</h2>
+                    <div class="subheading-1">
+                        Favor de completar su informacion para el registro.
+                    </div>
+
+                    <div class="mt-4 flex flex-col gap-2">
+
+                        <mat-form-field class="flex-auto">
+                            <mat-label>Nombre de la empresa</mat-label>
+                            <input formControlName="nombreempresa" matInput  />
+                            <mat-hint>Nombre de su empresa o compañia.</mat-hint>
+                        </mat-form-field>
+
+                        <mat-form-field class="flex-auto">
+                            <mat-label>Direccion</mat-label>
+                            <input formControlName="direccion" matInput  />
+                            <mat-hint>Ingrese su direccion</mat-hint>
+                        </mat-form-field>
+
+                        <div class="flex flex-col sm:flex-row gap-2 sm:gap-6">
+                            <mat-form-field class="flex-auto">
+                                <mat-label>Razon Social</mat-label>
+                                <input formControlName="rs1" matInput  />
+                                <mat-hint align="end">example&#64;example.com</mat-hint>
+                            </mat-form-field>
+
+                            <div class="flex-auto flex gap-2">
+                                <mat-form-field class="vex-flex-form-field flex-none">
+                                    <mat-label>RFC1</mat-label>
+                                    <input formControlName="rfc1" matInput  />
+                                </mat-form-field>
+
+                                <mat-form-field class="vex-flex-form-field flex-auto">
+                                    <mat-label>Direccion1 </mat-label>
+                                    <input formControlName="dir1" matInput />
+                                    <mat-hint align="end"></mat-hint>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-2 sm:gap-6">
+
+                            <mat-form-field class="flex-auto">
+                                <mat-label>Razon Social 2</mat-label>
+                                <input formControlName="rs2" matInput  />
+                                <mat-hint align="end">example&#64;example.com</mat-hint>
+                            </mat-form-field>
+
+                            <div class="flex-auto flex gap-2">
+                                <mat-form-field class="vex-flex-form-field flex-none">
+                                    <mat-label>RFC2</mat-label>
+                                    <input formControlName="rfc2" matInput  />
+                                </mat-form-field>
+
+                                <mat-form-field class="vex-flex-form-field flex-auto">
+                                    <mat-label>Direccion2 </mat-label>
+                                    <input formControlName="dir2" matInput />
+                                    <mat-hint align="end"></mat-hint>
+                                </mat-form-field>
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-2 sm:gap-6">
+
+                            <mat-form-field class="flex-auto">
+                                <mat-label>Razon Social 3</mat-label>
+                                <input formControlName="rs3" matInput  />
+                                <mat-hint align="end">example&#64;example.com</mat-hint>
+                            </mat-form-field>
+
+                            <div class="flex-auto flex gap-2">
+                                <mat-form-field class="vex-flex-form-field flex-none">
+                                    <mat-label>RFC3</mat-label>
+                                    <input formControlName="rfc3" matInput  />
+                                </mat-form-field>
+
+                                <mat-form-field class="vex-flex-form-field flex-auto">
+                                    <mat-label>Direccion3 </mat-label>
+                                    <input formControlName="dir3" matInput />
+                                    <mat-hint align="end"></mat-hint>
+                                </mat-form-field>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="actions flex items-center justify-end gap-2">
+                        <button (click)="stepper.reset()" [disabled]="accountFormGroup.pristine" color="primary"
+                            mat-button type="button">
+                            Reset
+                        </button>
+                        <!--button [disabled]="accountFormGroup.invalid" color="primary" mat-raised-button matStepperNext>Next</button-->
+                        <button color="primary" mat-raised-button matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step [stepControl]="mailFormGroup">
+                <form [formGroup]="mailFormGroup">
+                    <ng-template matStepLabel>Correos de contacto</ng-template>
+
+                    <h2 class="title m-0">Correos</h2>
+                    <div class="subheading-1">
+                        Ingresa los correos de contacto que se deben validar
+                    </div>
+
+                    <div class="mt-4 flex flex-col gap-2">
+
+                        <!--mat-form-field class="flex-auto">
+                            <mat-label>Password</mat-label>
+                            <input [type]="passwordInputType" formControlName="password" matInput required />
+                            <button (click)="showPassword()" *ngIf="passwordInputType === 'password'" mat-icon-button
+                                matIconSuffix type="button">
+                                <mat-icon svgIcon="mat:visibility"></mat-icon>
+                            </button>
+                            <button (click)="hidePassword()" *ngIf="passwordInputType === 'text'" mat-icon-button
+                                matIconSuffix type="button">
+                                <mat-icon svgIcon="mat:visibility_off"></mat-icon>
+                            </button>
+                            <mat-hint>Your password should be atleast 6 characters long.
+                            </mat-hint>
+                        </mat-form-field>
+                        <mat-form-field class="flex-auto">
+                            <mat-label>Confirm Password</mat-label>
+                            <input [type]="passwordInputType" formControlName="passwordConfirm" matInput required />
+                            <button (click)="showPassword()" *ngIf="passwordInputType === 'password'" mat-icon-button
+                                matIconSuffix type="button">
+                                <mat-icon svgIcon="mat:visibility"></mat-icon>
+                            </button>
+                            <button (click)="hidePassword()" *ngIf="passwordInputType === 'text'" mat-icon-button
+                                matIconSuffix type="button">
+                                <mat-icon svgIcon="mat:visibility_off"></mat-icon>
+                            </button>
+                            <mat-hint>Please type in your password again.</mat-hint>
+                        </mat-form-field-->
+
+                        <div class="flex flex-col sm:flex-row gap-2 sm:gap-6">
+                            <mat-form-field class="flex-auto">
+                                <mat-label>Email administrador</mat-label>
+                                <input formControlName="emailA" matInput  />
+                                <mat-hint align="end">example&#64;example.com</mat-hint>
+                            </mat-form-field>
+                            <div class="flex-auto flex gap-2">
+                                <mat-form-field class="vex-flex-form-field flex-none">
+                                    <mat-label>Password</mat-label>
+                                    <input formControlName="passA" matInput  />
+                                </mat-form-field>
+                                <mat-form-field class="vex-flex-form-field flex-auto">
+                                    <mat-label>Confirmar Password </mat-label>
+                                    <input formControlName="passA1" matInput />
+                                    <mat-hint align="end"></mat-hint>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+
+                        <div class="flex flex-col sm:flex-row gap-2 sm:gap-6">
+                            <mat-form-field class="flex-auto">
+                                <mat-label>Email user 1</mat-label>
+                                <input formControlName="email1" matInput  />
+                                <mat-hint align="end">example&#64;example.com</mat-hint>
+                            </mat-form-field>
+                            <div class="flex-auto flex gap-2">
+                                <mat-form-field class="vex-flex-form-field flex-none">
+                                    <mat-label>Password</mat-label>
+                                    <input formControlName="pass1" matInput  />
+                                </mat-form-field>
+                                <mat-form-field class="vex-flex-form-field flex-auto">
+                                    <mat-label>Confirmar Password </mat-label>
+                                    <input formControlName="pass11" matInput />
+                                    <mat-hint align="end"></mat-hint>
+                                </mat-form-field>
+
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-2 sm:gap-6">
+                            <mat-form-field class="flex-auto">
+                                <mat-label>Email user 2</mat-label>
+                                <input formControlName="email2" matInput  />
+                                <mat-hint align="end">example&#64;example.com</mat-hint>
+                            </mat-form-field>
+                            <div class="flex-auto flex gap-2">
+                                <mat-form-field class="vex-flex-form-field flex-none">
+                                    <mat-label>Password</mat-label>
+                                    <input formControlName="pass2" matInput  />
+                                </mat-form-field>
+                                <mat-form-field class="vex-flex-form-field flex-auto">
+                                    <mat-label>Confirmar Password </mat-label>
+                                    <input formControlName="pass21" matInput />
+                                    <mat-hint align="end"></mat-hint>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="actions flex items-center justify-end gap-2">
+                        <button color="primary" mat-button matStepperPrevious type="button">Regresar</button>
+                        <!--button [disabled]="passwordFormGroup.invalid" color="primary" mat-raised-button matStepperNext>Next</button-->
+                        <button color="primary" mat-raised-button matStepperNext>Next</button>
+                    </div>
+                </form>
+            </mat-step>
+
+            <mat-step [stepControl]="confirmFormGroup">
+                <form [formGroup]="confirmFormGroup">
+                    <ng-template matStepLabel>Confirmar</ng-template>
+
+                    <div class="title m-0">Ya casi estamos!</div>
+                    <div class="subheading-1">
+                        Para finalizar el registro, acepte nuestros términos de servicio y haga clic en "Crear una cuenta".
+                    </div>
+
+                    <div class="mt-4 flex flex-col gap-2">
+                        <mat-checkbox class="checkbox" formControlName="terms">Acepto los términos de servicio . *</mat-checkbox>
+                    </div>
+
+                    <div class="actions flex items-center justify-end gap-2">
+                        <button color="primary" mat-button matStepperPrevious type="button">Regresar</button>
+                        <button (click)="submit()" [disabled]="confirmFormGroup.invalid" color="primary" mat-raised-button matStepperNext> Crear cuenta</button>
+                    </div>
+                </form>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </div>
+
+
+</div>
