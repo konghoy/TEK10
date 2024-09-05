@@ -4,6 +4,10 @@ import { Routes } from '@angular/router';
 
 export const Full_ROUTES: Routes = [
     {
+        path: 'rfq',
+        loadChildren: () => import('../../rfq/rfq.module').then(m => m.RfqModule)
+    },
+    {
         path: 'dashboard',
         loadChildren: () => import('../../dashboard/dashboard.module').then(m => m.DashboardModule)
     },
