@@ -1,106 +1,116 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "d8fd46a2-43c3-4b0d-91b4-34cdfbe42127"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "vex": {
+    "Dashtreme-admin": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
         }
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "vex",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/vex",
+            "allowedCommonJsDependencies": [
+              "jquery",
+              "chart.js",
+              "highcharts"
+            ],
+            "outputPath": "dist/dashtreme-admin",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/_redirects",
-              "src/README.md",
-              "src/CHANGELOG.md",
-              "src/.htaccess",
-              {
-                "glob": "**/*.svg",
-                "input": "node_modules/@material-design-icons/svg",
-                "output": "assets/img/icons/material-design-icons/"
-              }
+              "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "src/@vex/styles/tailwind.scss"
+              "src/assets/css/icons.css",
+              "node_modules/angular-calendar/css/angular-calendar.css",
+              "src/assets/plugins/datatable/css/dataTables.bootstrap5.min.css",
+              "src/assets/sass/app.scss",
+              "src/styles.scss"
             ],
-            "scripts": [],
-            "allowedCommonJsDependencies": [
-              "simplebar",
-              "highlight.js",
-              "faker",
-              "showdown",
-              "core-js",
-              "dom-set",
-              "dom-plane",
-              "angular-calendar/date-adapters/date-fns",
-              "calendar-utils/date-adapters/date-fns",
-              "@mattlewis92/dom-autoscroller",
-              "apexcharts",
-              "can-use-dom",
-              "lodash.debounce",
-              "lodash.memoize",
-              "lodash.throttle",
-              "luxon",
-              "quill",
-              "seedrandom"
-            ],
-            "vendorChunk": true,
-            "extractLicenses": false,
-            "buildOptimizer": false,
-            "sourceMap": true,
-            "optimization": false,
-            "namedChunks": true
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/apexcharts/dist/apexcharts.min.js",
+              "node_modules/easy-pie-chart/dist/jquery.easypiechart.min.js",
+              "node_modules/peity/jquery.peity.min.js",
+              "src/assets/plugins/jvector-map/jquery-jvectormap-2.0.2.min.js",
+              "src/assets/plugins/jvector-map/jquery-jvectormap-world-mill-en.js",
+              "src/assets/plugins/datatable/js/jquery.dataTables.min.js",
+              "src/assets/plugins/datatable/js/dataTables.bootstrap5.min.js",
+              "src/assets/vendor/pace/pace.min.js",
+              "src/assets/plugins/sparkline-charts/jquery.sparkline.min.js",
+              "src/assets/plugins/jquery-knob/excanvas.js",
+              "src/assets/plugins/jquery-knob/jquery.knob.js"
+            ]
           },
           "configurations": {
             "production": {
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "4mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "5mb",
+                  "maximumError": "6mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
                 }
-              ]
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "buildTarget": "vex:build"
-          },
           "configurations": {
             "production": {
-              "buildTarget": "vex:build:production"
+              "browserTarget": "Dashtreme-admin:build:production"
+            },
+            "development": {
+              "browserTarget": "Dashtreme-admin:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "vex:build"
+            "browserTarget": "Dashtreme-admin:build"
           }
         },
         "test": {
@@ -110,6 +120,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -123,7 +134,5 @@
       }
     }
   },
-  "cli": {
-    "analytics": "07fc06bc-fb80-48f4-88a7-29cac7225cae"
-  }
+  "defaultProject": "Dashtreme-admin"
 }
