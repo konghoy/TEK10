@@ -16,7 +16,7 @@ export class PanelComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(' -- ngOnInit  DigitalMarketingComponent ')
+    console.log(' -- ngOnInit  PanelComponent ');
     //$.getScript("./assets/js/digital-marketing.js");
     //$.getScript("./assets/js/alternate-dashboard.js");
     //LDRG

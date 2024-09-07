@@ -10,6 +10,8 @@ export class RfqsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(' -- ngOnInit  RfqsComponent ');
+
     //$.getScript("./assets/js/e-commerce-dashboard.js");
   }
 

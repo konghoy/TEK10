@@ -10,6 +10,8 @@ export class BuysComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(' -- ngOnInit  BuysComponent ');
+
   }
 
 }

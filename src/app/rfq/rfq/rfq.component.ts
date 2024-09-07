@@ -10,6 +10,7 @@ export class RfqComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(' -- ngOnInit  RfqComponent ');
     $.getScript('./assets/plugins/fancy-file-uploader/jquery.ui.widget.js');
     $.getScript('./assets/plugins/fancy-file-uploader/jquery.fileupload.js');
     $.getScript('./assets/plugins/fancy-file-uploader/jquery.iframe-transport.js');

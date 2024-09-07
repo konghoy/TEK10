@@ -18,6 +18,10 @@ export const Full_ROUTES: Routes = [
     {
         path: 'buys',
         loadChildren: () => import('../../buys/buys.module').then(m => m.BuysModule)
+    },    
+    {
+        path: 'projectsz',
+        loadChildren: () => import('../../projectsz/projectsz.module').then(m => m.ProjectszModule)
     },
     {
         path: 'dashboard',
