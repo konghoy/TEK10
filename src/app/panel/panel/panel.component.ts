@@ -19,6 +19,7 @@ export class PanelComponent implements OnInit {
     console.log(' -- ngOnInit  DigitalMarketingComponent ')
     //$.getScript("./assets/js/digital-marketing.js");
     //$.getScript("./assets/js/alternate-dashboard.js");
+    //LDRG
     
   }
 

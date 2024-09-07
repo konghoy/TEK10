@@ -12,6 +12,10 @@ export const Full_ROUTES: Routes = [
         loadChildren: () => import('../../panel/panel.module').then(m => m.PanelModule)
     },
     {
+        path: 'rfqs',
+        loadChildren: () => import('../../rfqs/rfqs.module').then(m => m.RfqsModule)
+    },
+    {
         path: 'dashboard',
         loadChildren: () => import('../../dashboard/dashboard.module').then(m => m.DashboardModule)
     },
