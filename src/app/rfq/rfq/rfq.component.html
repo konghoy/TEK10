@@ -4,7 +4,7 @@
 		<div class="card w-100">
 
 			<div class="card-body">
-				
+
 				<div class="col-12">
 					<label class="form-label">Nombre del Proyecto</label>
 					<input type="text" class="form-control" placeholder="piezas">
@@ -14,10 +14,10 @@
 					<label class="form-label">Description</label>
 					<textarea class="form-control" rows="3" cols="3" placeholder="Product Description"></textarea>
 				</div>
-				
+
 				<div class="col-12">
 					<label class="form-label">Contactos</label>
-					<div class="row g-3">				
+					<div class="row g-3">
 						<div class="col-lg-6">
 							<input type="text" class="form-control" placeholder="Contacto Comercial">
 						</div>
@@ -29,62 +29,118 @@
 					</div>
 				</div>
 
-				<input type="file" (change)="onFilesSelected($event)" multiple />
-				<button (click)="onUpload()">Subir archivos</button>
+				<div class="col-12">
+					<label class="form-label">Piezas Originales</label>
+					<input type="file" (change)="onFilesSelected($event)" multiple />
+					<button (click)="onUpload()">Subir archivos</button>
+
+				</div>
 
 
-				<div *ngIf="banderaTabla" class="table-responsive">
+
+
+				<div *ngIf="banderaTablaP" class="table-responsive">
 					<table class="table align-middle mb-0">
-						
-						<thead class="table-light">
-							<tr><th>Tek id</th><th>Nombre</th><th>Cantidad</th></tr>
-						</thead>
 
+						<thead class="table-light">
+							<tr>
+								<th>Tek id</th>
+								<th>Nombre</th>
+								<th>Dibujo 2d</th>
+								<th>Dibujo 3d</th>
+								<th>Cantidad</th>
+							</tr>
+						</thead>
 						<tbody>
-							<tr>
-								<td>#897656</td>
-								<td><div class="d-flex align-items-center">
-										<div class="ms-2">
-											<h6 class="mb-1 font-14">Light Blue Chair</h6>
-										</div>
-									</div>
-								</td>
-								<td>6</td>								
+							<tr *ngFor="let item of listaPiezasOriginales">
+								<td>{{ item.item }}</td>
+								<td>{{ item.nombre }}</td>
+								<td>{{ item.dibujo2d }}</td>
+								<!--td>{{ item.dibujo3d }}</td-->
+								<td><button class="btn btn-light"
+										(click)="onButtonClick(dato.nombre)">Presionar</button></td>
+
+								<td>{{ item.cantidad }}</td>
 							</tr>
-							<tr>
-								<td>#987549</td>
-								<td><div class="d-flex align-items-center">
-										<div class="ms-2">
-											<h6 class="mb-1 font-14">Green Sport Shoes</h6>
-										</div>
-									</div>
-								</td>
-								<td>7</td>
-							</tr>
-							<tr>
-								<td>#685749</td>
-								<td><div class="d-flex align-items-center">		
-										<div class="ms-2">
-											<h6 class="mb-1 font-14">Red Headphone 07</h6>
-										</div>
-									</div>
-								</td>
-								<td>11</td>								
-							</tr>
+
 						</tbody>
+						<!--thead>
+							<tr>
+							  <th>Nombre</th>
+							  <th>Email</th>
+							  <th>Acciones</th>
+							</tr>
+						  </thead>
+						  <tbody>
+							<tr *ngFor="let user of users; let i = index">
+							  <td>
+								<span *ngIf="!editing[i]">{{ user.name }}</span>
+								<input *ngIf="editing[i]" [(ngModel)]="user.name" />
+							  </td>
+							  <td>
+								<span *ngIf="!editing[i]">{{ user.email }}</span>
+								<input *ngIf="editing[i]" [(ngModel)]="user.email" />
+							  </td>
+							  <td>
+								<button *ngIf="!editing[i]" class="btn btn-light" (click)="editRow(i)">Editar</button>
+								<button *ngIf="editing[i]" class="btn btn-light"(click)="saveRow(i)">Guardar</button>															
+								<button *ngIf="editing[i]" class="btn btn-light" (click)="cancelEdit(i)">Cancelar</button>
+							  </td>
+							</tr>
+						  </tbody-->
+					</table>
+				</div>
+
+				<label class="form-label">Piezas Espejo </label>
+
+				<div class="col-12">
+					<label class="form-label">Piezas Originales</label>
+					<input type="file" (change)="onFilesSelected($event)" multiple />
+					<button (click)="onUpload()">Subir archivos</button>
+
+				</div>
+
+				<div *ngIf="banderaTablaPEspejo" class="table-responsive">
+					<table class="table align-middle mb-0">
+
+						<thead class="table-light">
+							<tr>
+								<th>Tek id</th>
+								<th>Nombre</th>
+								<th>Dibujo 2d</th>
+								<th>Dibujo 3d</th>
+								<th>Cantidad</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let item of listaPiezasEspejo">
+								<td>{{ item.item }}</td>
+								<td>{{ item.nombre }}</td>
+								<td>{{ item.dibujo2d }}</td>
+								<!--td>{{ item.dibujo3d }}</td-->
+								<td><button class="btn btn-light"
+										(click)="onButtonClick(dato.nombre)">Presionar</button></td>
+
+								<td>{{ item.cantidad }}</td>
+							</tr>
+
+						</tbody>
+
 					</table>
 				</div>
 
 
 
-		
+
 
 			</div>
 		</div>
 	</div>
 	<div class="col-12 col-lg-3 d-flex">
 		<div class="card w-100">
-			<div class="card-header py-3"><h5 class="mb-0">Nuevo Proyecto by</h5></div>
+			<div class="card-header py-3">
+				<h5 class="mb-0">Nuevo Proyecto by</h5>
+			</div>
 			<div class="card-body">
 				<form class="row g-3">
 
@@ -115,12 +171,14 @@
 
 					<div class="col-12">
 						<label class="form-label">Numero de piezas</label>
-						<input type="text" class="form-control" placeholder="piezas">
+						<input type="text" class="form-control" placeholder="piezas" [value]="totalPiezas"
+							[disabled]="true">
 					</div>
 
 					<div class="col-12">
 						<label class="form-label">Piezas espejo</label>
-						<input type="text" class="form-control" placeholder="espejo">
+						<input type="text" class="form-control" placeholder="espejo" [value]="totalPiezasEspejo"
+							[disabled]="true">
 					</div>
 
 					<div class="col-12">
