@@ -57,6 +57,62 @@
 			<table class="table align-middle mb-0">
 				<thead class="table-light">
 					<tr>
+						<th>Tekid</th>
+						<th>Proyecto</th>
+						<th>TipoProyecto</th>
+						<th>Ahorro</th>
+						<!--th>Ahorro</th-->
+						<th>Ofertas</th>
+						<th>Valido</th>
+						<th>Estatus</th>
+						<th>Total piezas</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let cot of listaCotizaciones">
+
+						
+						<td>{{ cot.tekid }}</td>
+						<td>{{ cot.nombreproyecto }}</td>
+						<td>{{ cot.nombreproyecto }}</td>
+						
+						<td>
+							<div class="d-flex align-items-center text-white"> <i
+									class='bx bx-radio-circle-marked bx-burst bx-rotate-90 align-middle font-18 me-1'></i>
+								<span>Creado</span>
+							</div>
+						</td>
+						<td>{{ cot.tipoproyecto }}</td>
+						<td>{{ cot.teminopago }}</td>
+						<td>{{ cot.totalpiezas }}</td>
+						
+					</tr>
+
+
+					<tr>
+
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<div class="card radius-10">
+	<div class="card-body">
+		<div class="d-flex align-items-center">
+			<div>
+				<h5 class="mb-0">Listos para comprar</h5>
+			</div>
+			<div class="font-22 ms-auto"><i class='bx bx-dots-horizontal-rounded'></i>
+			</div>
+		</div>
+		<hr />
+		<div class="table-responsive">
+			<table class="table align-middle mb-0">
+				<thead class="table-light">
+					<tr>
 						<th>Tek id</th>
 						<th>Proyecto</th>
 						<th>Ahorro</th>
@@ -285,7 +341,7 @@
 						<p class="mb-0 font-13"><i class='bx bxs-up-arrow align-middle'></i>14% Since last week</p>
 					</div>
 					<div class="widgets-icons ms-auto"><i class='bx bxs-group'></i></div>
-				</div>				
+				</div>
 			</div>
 		</div>
 		<div class="card radius-10">
@@ -321,7 +377,7 @@
 
 
 <div class="container">
-	
+
 	<div class="col d-flex">
 		<div class="card radius-10 w-100">
 			<div class="card-body">
@@ -329,8 +385,11 @@
 					<div>
 						<h6 class="mb-0">Compras mensuales</h6>
 					</div>
-					<div class="d-flex align-items-center ms-auto font-13 gap-2"> <span class="border px-1 rounded cursor-pointer"><i class='bx bxs-circle text-white me-1'></i>Ahorros</span>
-						<span class="border px-1 rounded cursor-pointer"><i class='bx bxs-circle text-light-3 me-1'></i>Compras</span>
+					<div class="d-flex align-items-center ms-auto font-13 gap-2"> <span
+							class="border px-1 rounded cursor-pointer"><i
+								class='bx bxs-circle text-white me-1'></i>Ahorros</span>
+						<span class="border px-1 rounded cursor-pointer"><i
+								class='bx bxs-circle text-light-3 me-1'></i>Compras</span>
 					</div>
 				</div>
 				<div id="chart7"></div>
