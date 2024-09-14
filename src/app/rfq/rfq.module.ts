@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { RfqRoutingModule } from './rfq-routing.module';
 import { RfqComponent } from './rfq/rfq.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,7 @@ import { RfqComponent } from './rfq/rfq.component';
   ],
   imports: [
     CommonModule,
-    RfqRoutingModule
+    RfqRoutingModule,ReactiveFormsModule
   ]
 })
 export class RfqModule { }

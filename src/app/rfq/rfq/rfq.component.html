@@ -1,191 +1,187 @@
-<!--end breadcrumb-->
 <div class="row">
-	<div class="col-12 col-lg-9 d-flex">
+	<div class="col-lg-12 mx-auto">
 		<div class="card w-100">
+			<div class="card">
 
-			<div class="card-body">
-
-				<div class="col-12">
-					<label class="form-label">Nombre del Proyecto</label>
-					<input type="text" class="form-control" placeholder="piezas">
+				<div class="card-header py-3 bg-transparent">
+					<h5 class="mb-0">Crear Cotizacion</h5>
 				</div>
 
-				<div class="col-12">
-					<label class="form-label">Description</label>
-					<textarea class="form-control" rows="3" cols="3" placeholder="Product Description"></textarea>
-				</div>
-
-				<div class="col-12">
-					<label class="form-label">Contactos</label>
+				
+				<div class="card-body">
 					<div class="row g-3">
-						<div class="col-lg-6">
-							<input type="text" class="form-control" placeholder="Contacto Comercial">
-						</div>
-						<div class="col-lg-6">
-							<div class="input-group">
-								<input type="text" class="form-control" placeholder="Contacto tecnico">
+						<div class="col-12 col-lg-8">
+							<div class="card shadow-none bg-light border">
+								<div class="card-body">
+									<form class="row g-3" [formGroup]="formCotizacion" (ngSubmit)="submitForm()">
+										<!--/form-->
+										<div class="col-12">
+											<label class="form-label" for="nombre">Nombre del Proyecto</label>
+											<input matInput id="nombreproyecto" type="text" class="form-control"
+												formControlName="nombreproyecto" placeholder="Proyecto">
+										</div>				
+										<div class="col-12">
+											<label class="form-label">Description</label>
+											<textarea class="form-control" rows="3" cols="3" formControlName="descripcion"></textarea>
+										</div>				
+										<div class="col-12">
+											<label class="form-label">Contactos</label>
+											<div class="row g-3">
+												<div class="col-lg-6">
+													<input type="text" class="form-control" formControlName="contactogeneral"
+														placeholder="Contacto General">
+												</div>
+												<div class="col-lg-6">
+													<div class="input-group">
+														<input type="text" class="form-control" formControlName="contactotecnico"
+															placeholder="Contacto Tecnico">
+													</div>
+												</div>
+											</div>
+										</div>				
+										<div class="col-12">
+											<label class="form-label">Piezas Originales</label>
+											<input class="form-control" type="file" (change)="onFilesSelected($event, '1')" multiple />
+											
+										</div>			
+										<div *ngIf="banderaTablaOriginales" class="table-responsive">
+											<table class="table align-middle mb-0">
+												<thead class="table-light">
+													<tr>
+														<th>Tek id</th>
+														<th>Nombre</th>
+														<th>Dibujo 2d</th>
+														<th>Dibujo 3d</th>
+														<th>nombre3d</th>
+														<th>Eliminar</th>
+														<th>Cantidad</th>
+														<th>Actions</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr *ngFor="let item of listaPiezasOriginales ; let i = index">
+														<td>{{ item.item }}</td>
+														<td>{{ item.nombre }}</td>
+														<td>{{ item.dibujo2d }}</td>
+														<td><button class="btn btn-light" (click)="onButtonClickPiezaOriginal(item.item)">{{ texto3d}}</button></td>
+														<td>{{ item.nombre3d }}</td>
+														<td>
+															<div class="d-flex order-actions">
+																<a href="javascript:;" class="text-white bg-light border-0" (click)="clickeliminar3d(item.item)"><i class='bx bxs-trash'></i></a>
+															</div>
+														</td>
+														<td>
+															<span *ngIf="!editing[i]">{{ item.nombre }}</span>
+															<input style="background: border-box;" *ngIf="editing[i]"[(ngModel)]="item.nombre" />
+														</td>
+														<td>
+															<div class="d-flex order-actions">
+																<a href="javascript:;" *ngIf="!editing[i]"class="text-white bg-light border-0"(click)="clickeliminar3d(item.item)"><i class='bx bxs-trash'></i></a>
+																<a href="javascript:;" *ngIf="!editing[i]"class="ms-4 text-white bg-light border-0" (click)="editRow(i)"><i class='bx bxs-edit'></i></a>
+																<a href="javascript:;" *ngIf="editing[i]"class="ms-4 text-white bg-light border-0" (click)="saveRow(i)"><i class='bx bx-save'></i></a>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>						
+										<div class="col-12">
+											<label class="form-label">Piezas Espejo</label>
+											<input class="form-control" type="file" type="file" (change)="onFilesSelected($event,'2')" multiple />
+										</div>
+										<div *ngIf="banderaTablaPEspejo" class="table-responsive">
+											<table class="table align-middle mb-0">
+												<thead class="table-light">
+													<tr>
+														<th>Tek id</th>
+														<th>Nombre</th>
+														<th>Dibujo 2d</th>
+														<th>Dibujo 3d</th>
+														<th>nombre3d</th>
+														<th>Eliminar</th>
+														<th>Cantidad</th>
+														<th>Actions</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr *ngFor="let item of listaPiezasEspejo">
+														<td>{{ item.item }}</td>
+														<td>{{ item.nombre }}</td>
+														<td>{{ item.dibujo2d }}</td>										
+														<td><button class="btn btn-light"
+																(click)="onButtonClickPiezaEspejo(item.item)">{{
+																texto3d}}</button></td>
+														<td>{{ item.nombre3d }}</td>
+														<td>
+															<div class="d-flex order-actions">
+																<a href="javascript:;" class="text-white bg-light border-0"><i
+																		class='bx bxs-trash'></i></a>
+															</div>
+														<td>{{ item.cantidad }}</td>
+														<td>
+															<div class="d-flex order-actions"> <a href="javascript:;"
+																	class="text-white bg-light border-0"><i
+																		class='bx bxs-trash'></i></a>
+																<a href="javascript:;" class="ms-4 text-white bg-light border-0"><i
+																		class='bx bxs-edit'></i></a>
+															</div>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</form>
+								</div>
 							</div>
 						</div>
-					</div>
+
+						<div class="col-12 col-lg-4">
+							<div class="card shadow-none bg-light border">
+								<div class="card-body">
+									<div class="row g-3">
+										<form class="row g-3">
+											<div class="col-12">
+												<label class="form-label">Tipo de proyecto</label>
+												<select class="form-select">
+													<option>Urgente</option>
+													<option>Automatizacion</option>
+													<option>Fixturesx/Gauges</option>
+													<option>Refacciones/Piezas de desgaste</option>
+												</select>
+											</div>
+											<div class="col-12">
+												<label class="form-label">Fecha limite </label>
+												<input type="date" class="form-control">
+											</div>
+											<div class="col-12">
+												<label class="form-label">Termino de pago</label>
+												<select class="form-select">
+													<option>15 dias</option>
+													<option>30 Dias</option>
+													<option>Contra entregas</option>
+												</select>
+											</div>
+											<div class="col-12">
+												<label class="form-label">Numero de piezas</label>
+												<input type="text" class="form-control" placeholder="piezas" [value]="totalPiezasOriginal" [disabled]="true">
+											</div>
+											<div class="col-12">
+												<label class="form-label">Piezas espejo</label>
+												<input type="text" class="form-control" placeholder="espejo" [value]="totalPiezasEspejo" [disabled]="true">
+											</div>
+											<div class="col-12">
+												
+											</div>
+											<button class="btn btn-light" (click)="clickGuardars()">Guardar</button>
+										</form>
+
+									</div>
+								</div>					
+							</div>					
+						</div>					
+
+					</div>					
 				</div>
-
-				<div class="col-12">
-					<label class="form-label">Piezas Originales</label>
-					<input type="file" (change)="onFilesSelected($event)" multiple />
-					<button (click)="onUpload()">Subir archivos</button>
-
-				</div>
-
-
-
-
-				<div *ngIf="banderaTablaP" class="table-responsive">
-					<table class="table align-middle mb-0">
-
-						<thead class="table-light">
-							<tr>
-								<th>Tek id</th>
-								<th>Nombre</th>
-								<th>Dibujo 2d</th>
-								<th>Dibujo 3d</th>
-								<th>Cantidad</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let item of listaPiezasOriginales">
-								<td>{{ item.item }}</td>
-								<td>{{ item.nombre }}</td>
-								<td>{{ item.dibujo2d }}</td>
-								<!--td>{{ item.dibujo3d }}</td-->
-								<td><button class="btn btn-light"
-										(click)="onButtonClick(dato.nombre)">Presionar</button></td>
-
-								<td>{{ item.cantidad }}</td>
-							</tr>
-
-						</tbody>
-						<!--thead>
-							<tr>
-							  <th>Nombre</th>
-							  <th>Email</th>
-							  <th>Acciones</th>
-							</tr>
-						  </thead>
-						  <tbody>
-							<tr *ngFor="let user of users; let i = index">
-							  <td>
-								<span *ngIf="!editing[i]">{{ user.name }}</span>
-								<input *ngIf="editing[i]" [(ngModel)]="user.name" />
-							  </td>
-							  <td>
-								<span *ngIf="!editing[i]">{{ user.email }}</span>
-								<input *ngIf="editing[i]" [(ngModel)]="user.email" />
-							  </td>
-							  <td>
-								<button *ngIf="!editing[i]" class="btn btn-light" (click)="editRow(i)">Editar</button>
-								<button *ngIf="editing[i]" class="btn btn-light"(click)="saveRow(i)">Guardar</button>															
-								<button *ngIf="editing[i]" class="btn btn-light" (click)="cancelEdit(i)">Cancelar</button>
-							  </td>
-							</tr>
-						  </tbody-->
-					</table>
-				</div>
-
-				<label class="form-label">Piezas Espejo </label>
-
-				<div class="col-12">
-					<label class="form-label">Piezas Originales</label>
-					<input type="file" (change)="onFilesSelected($event)" multiple />
-					<button (click)="onUpload()">Subir archivos</button>
-
-				</div>
-
-				<div *ngIf="banderaTablaPEspejo" class="table-responsive">
-					<table class="table align-middle mb-0">
-
-						<thead class="table-light">
-							<tr>
-								<th>Tek id</th>
-								<th>Nombre</th>
-								<th>Dibujo 2d</th>
-								<th>Dibujo 3d</th>
-								<th>Cantidad</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr *ngFor="let item of listaPiezasEspejo">
-								<td>{{ item.item }}</td>
-								<td>{{ item.nombre }}</td>
-								<td>{{ item.dibujo2d }}</td>
-								<!--td>{{ item.dibujo3d }}</td-->
-								<td><button class="btn btn-light"
-										(click)="onButtonClick(dato.nombre)">Presionar</button></td>
-
-								<td>{{ item.cantidad }}</td>
-							</tr>
-
-						</tbody>
-
-					</table>
-				</div>
-
-
-
-
-
-			</div>
-		</div>
-	</div>
-	<div class="col-12 col-lg-3 d-flex">
-		<div class="card w-100">
-			<div class="card-header py-3">
-				<h5 class="mb-0">Nuevo Proyecto by</h5>
-			</div>
-			<div class="card-body">
-				<form class="row g-3">
-
-					<div class="col-12">
-						<label class="form-label">Tipo de proyecto</label>
-						<select class="form-select">
-							<option>Urgente</option>
-							<option>Automatizacion</option>
-							<option>Fixturesx/Gauges</option>
-							<option>Refacciones/Piezas de desgaste</option>
-						</select>
-					</div>
-
-					<div class="col-12">
-						<label class="form-label">Fecha limite </label>
-						<input type="date" class="form-control">
-					</div>
-
-					<div class="col-12">
-						<label class="form-label">Condiciones de pago</label>
-						<select class="form-select">
-							<option>Tarjeta</option>
-							<option>Efectivo</option>
-							<option>Transferencia</option>
-						</select>
-					</div>
-
-
-					<div class="col-12">
-						<label class="form-label">Numero de piezas</label>
-						<input type="text" class="form-control" placeholder="piezas" [value]="totalPiezas"
-							[disabled]="true">
-					</div>
-
-					<div class="col-12">
-						<label class="form-label">Piezas espejo</label>
-						<input type="text" class="form-control" placeholder="espejo" [value]="totalPiezasEspejo"
-							[disabled]="true">
-					</div>
-
-					<div class="col-12">
-						<div class="d-grid"><button class="btn btn-light">Guardar</button></div>
-					</div>
-
-				</form>
 			</div>
 		</div>
 	</div>
