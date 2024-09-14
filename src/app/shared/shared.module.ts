@@ -9,6 +9,7 @@ import { FooterComponent } from "./footer/footer.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { ColorSwitcherComponent } from './color-switcher/color-switcher.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,13 +20,17 @@ import { ColorSwitcherComponent } from './color-switcher/color-switcher.componen
         NavbarComponent,
         SidebarComponent,
         ColorSwitcherComponent,
+        FormsModule,
+        ReactiveFormsModule,
         NgbModule
     ],
     imports: [
         RouterModule,
         CommonModule,
         NgbModule,
-        PerfectScrollbarModule
+        PerfectScrollbarModule,        
+        FormsModule,
+        ReactiveFormsModule,
     ],
     declarations: [
         FooterComponent,

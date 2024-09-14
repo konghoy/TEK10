@@ -26,6 +26,6 @@ export const ROUTES: RouteInfo[] = [
     }, {
         path: 'dashboard/eCommerce', title: 'Registro Proveedor', icon: 'bi bi-headset', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: []
     }, {
-        path: 'dashboard/eCommerce', title: 'v.20924', icon: 'bi bi-headset', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: []
+        path: 'dashboard/eCommerce', title: 'v.12/9/24', icon: 'bi bi-headset', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: []
     },
 ];
