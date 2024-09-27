@@ -7,6 +7,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SigninWithHeaderFooterComponent } from './signin-with-header-footer/signin-with-header-footer.component';
 import { SignupWithHeaderFooterComponent } from './signup-with-header-footer/signup-with-header-footer.component';
+import { ValidtionsComponent } from './validtions/validtions.component';
 
 const routes: Routes = [
   {
@@ -62,6 +63,13 @@ const routes: Routes = [
           title: 'Lock Screen'
         }
       },
+      {
+        path: 'validtions',
+        component: ValidtionsComponent,
+        data: {
+          title: 'Validacion'
+        }
+      }
     ]
   }
 ];

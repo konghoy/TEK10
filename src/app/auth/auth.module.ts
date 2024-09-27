@@ -9,6 +9,10 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { LockScreenComponent } from './lock-screen/lock-screen.component';
 import { SigninWithHeaderFooterComponent } from './signin-with-header-footer/signin-with-header-footer.component';
 import { SignupWithHeaderFooterComponent } from './signup-with-header-footer/signup-with-header-footer.component';
+import { ValidtionsComponent } from './validtions/validtions.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -20,10 +24,13 @@ import { SignupWithHeaderFooterComponent } from './signup-with-header-footer/sig
     ResetPasswordComponent, 
     LockScreenComponent, 
     SigninWithHeaderFooterComponent,
-    SignupWithHeaderFooterComponent],
+    SignupWithHeaderFooterComponent,
+    ValidtionsComponent],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    NgbModule,
+    AuthRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class AuthModule { }
