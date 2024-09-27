@@ -4,7 +4,7 @@
 			<div class="card">
 
 				<div class="card-header py-3 bg-transparent">
-					<h5 class="mb-0">Crear Cotizacion</h5>
+					<h5 class="mb-0">Crear Proyecto</h5>
 				</div>
 
 				
@@ -12,8 +12,9 @@
 					<div class="row g-3">
 						<div class="col-12 col-lg-8">
 							<div class="card shadow-none bg-light border">
+								
 								<div class="card-body">
-									<form class="row g-3" [formGroup]="formCotizacion" (ngSubmit)="submitForm()">
+									<form class="row g-3" [formGroup]="formProyecto" (ngSubmit)="submitForm()">
 										<!--/form-->
 										<div class="col-12">
 											<label class="form-label" for="nombre">Nombre del Proyecto</label>
@@ -114,16 +115,13 @@
 														<td>{{ item.nombre3d }}</td>
 														<td>
 															<div class="d-flex order-actions">
-																<a href="javascript:;" class="text-white bg-light border-0"><i
-																		class='bx bxs-trash'></i></a>
+																<a href="javascript:;" class="text-white bg-light border-0"><i class='bx bxs-trash'></i></a>
 															</div>
 														<td>{{ item.cantidad }}</td>
 														<td>
-															<div class="d-flex order-actions"> <a href="javascript:;"
-																	class="text-white bg-light border-0"><i
-																		class='bx bxs-trash'></i></a>
-																<a href="javascript:;" class="ms-4 text-white bg-light border-0"><i
-																		class='bx bxs-edit'></i></a>
+															<div class="d-flex order-actions"> 
+																<a href="javascript:;" class="text-white bg-light border-0"><i class='bx bxs-trash'></i></a>
+																<a href="javascript:;" class="ms-4 text-white bg-light border-0"><i class='bx bxs-edit'></i></a>
 															</div>
 														</td>
 													</tr>
@@ -139,10 +137,10 @@
 							<div class="card shadow-none bg-light border">
 								<div class="card-body">
 									<div class="row g-3">
-										<form class="row g-3">
+										<form class="row g-3" [formGroup]="formTiempo">
 											<div class="col-12">
 												<label class="form-label">Tipo de proyecto</label>
-												<select class="form-select">
+												<select class="form-select" formControlName="tipoproyecto">
 													<option>Urgente</option>
 													<option>Automatizacion</option>
 													<option>Fixturesx/Gauges</option>
@@ -151,11 +149,11 @@
 											</div>
 											<div class="col-12">
 												<label class="form-label">Fecha limite </label>
-												<input type="date" class="form-control">
+												<input type="date" class="form-control" formControlName="fechalimite">
 											</div>
 											<div class="col-12">
 												<label class="form-label">Termino de pago</label>
-												<select class="form-select">
+												<select class="form-select" formControlName="terminopago">
 													<option>15 dias</option>
 													<option>30 Dias</option>
 													<option>Contra entregas</option>
@@ -172,7 +170,8 @@
 											<div class="col-12">
 												
 											</div>
-											<button class="btn btn-light" (click)="clickGuardars()">Guardar</button>
+											<!--button class="btn btn-light" (click)="clickGuardars()">Guardar</button-->
+											<button class="btn btn-light" (click)="guardarCotizacion()">Guardar</button>
 										</form>
 
 									</div>

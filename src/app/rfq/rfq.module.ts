@@ -12,7 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    RfqRoutingModule,ReactiveFormsModule
+    RfqRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class RfqModule { }
