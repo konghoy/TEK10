@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 
+
 //Route for content layout with sidebar, navbar and footer.
 
 export const Full_ROUTES: Routes = [
@@ -33,6 +34,9 @@ export const Full_ROUTES: Routes = [
     }, {
         path: 'ecommerce',
         loadChildren: () => import('../../ecommerce/ecommerce.module').then(m => m.EcommerceModule)
+    }, {
+        path: 'admin',
+        loadChildren: () => import('../../admin/admin.module').then(m => m.AdminModule)
     }, {
         path: 'components',
         loadChildren: () => import('../../components/components.module').then(m => m.ComponentsModule)
