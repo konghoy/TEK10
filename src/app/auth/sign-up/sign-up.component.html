@@ -28,7 +28,7 @@
 										<div class="row mb-3">
 											<label  class="col-sm-3 col-form-label" for="nombre">Nombre</label>
 											<div class="col-sm-9">
-												<input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre">
+												<input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="Nombre" required>
 											</div>
 										</div>
 										<div class="row mb-3">
@@ -57,14 +57,16 @@
 											</div>
 										</div>																		
 										<div class="radio-group">					
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" (change)="seleccionarOpcion('Cliente')">
-											<label class="form-check-label" for="flexRadioDefault1">Cliente</label>
+											<input class="form-check-input" type="radio" id="perfil" name="perfil" (change)="seleccionarOpcion('Cliente')">
+											<label class="form-check-label" for="perfil">Cliente</label>
 										
 						
-											<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" (change)="seleccionarOpcion('Proveedor')">
-											<label class="form-check-label" for="flexRadioDefault2">Proveedor</label>
+											<input class="form-check-input" type="radio" id="perfil" name="perfil"  (change)="seleccionarOpcion('Proveedor')">
+											<label class="form-check-label" for="perfil">Proveedor</label>
 										</div>
+
 										<p>Opción seleccionada: {{ opcionSeleccionada }}</p>
+
 										<div class="col-12">
 											<div class="form-check form-switch">
 												<input class="form-check-input" type="checkbox"
@@ -73,10 +75,12 @@
 													terminos y condiciones</label>
 											</div>
 										</div>
+
 										<div class="col-12">
 											<div class="d-grid">
 												<!--button type="submit" class="btn btn-light"><i class='bx bx-user' (click)="onSignIn()"></i>Registrarse</button-->
-												<button class="btn btn-light" (click)="guardarUsuarioApi()"><i class='bx bx-user' ></i>Registrarse</button>
+												<button [disabled]="formRegistrousuario.invalid" class="btn btn-light" (click)="clickRegistro()"><i class='bx bx-user' >													
+												</i>Registrarse</button>
 											</div>
 										</div>
 

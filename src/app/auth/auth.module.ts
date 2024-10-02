@@ -6,12 +6,13 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { LockScreenComponent } from './lock-screen/lock-screen.component';
-import { SigninWithHeaderFooterComponent } from './signin-with-header-footer/signin-with-header-footer.component';
-import { SignupWithHeaderFooterComponent } from './signup-with-header-footer/signup-with-header-footer.component';
 import { ValidtionsComponent } from './validtions/validtions.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HttpClientModule } from '@angular/common/http';
+import { ConfirmarRegistroComponent } from './confirmar-registro/confirmar-registro.component';
+import { CorreoConfirmadoComponent } from './correo-confirmado/correo-confirmado.component';
 
 
 
@@ -22,15 +23,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     SignUpComponent,
     ForgotPasswordComponent, 
     ResetPasswordComponent, 
-    LockScreenComponent, 
-    SigninWithHeaderFooterComponent,
-    SignupWithHeaderFooterComponent,
-    ValidtionsComponent],
+    ValidtionsComponent,
+    ConfirmarRegistroComponent,
+    CorreoConfirmadoComponent],
   imports: [
     CommonModule,
     NgbModule,
     AuthRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,    
+    MatSnackBarModule,HttpClientModule
+
   ]
 })
 export class AuthModule { }

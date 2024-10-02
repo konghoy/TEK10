@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { LockScreenComponent } from './lock-screen/lock-screen.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-import { SigninWithHeaderFooterComponent } from './signin-with-header-footer/signin-with-header-footer.component';
-import { SignupWithHeaderFooterComponent } from './signup-with-header-footer/signup-with-header-footer.component';
 import { ValidtionsComponent } from './validtions/validtions.component';
+import { CorreoConfirmadoComponent } from './correo-confirmado/correo-confirmado.component';
 
 const routes: Routes = [
   {
@@ -16,59 +14,27 @@ const routes: Routes = [
       {
         path: 'sign-in',
         component: SignInComponent,
-        data: {
-          title: 'Sign In'
-        }
-      },
-      {
+        data: { title: 'Sign In' }
+      },{
         path: 'sign-up',
         component: SignUpComponent,
-        data: {
-          title: 'Sign Up'
-        }
-      },
-      {
-        path: 'signin-with-header-footer',
-        component: SigninWithHeaderFooterComponent,
-        data: {
-          title: 'SignIn With Header Footer'
-        }
-      },
-      {
-        path: 'signup-with-header-footer',
-        component: SignupWithHeaderFooterComponent,
-        data: {
-          title: 'SignUp With Header Footer'
-        }
-      },
-      
-      {
+        data: { title: 'Sign Up' }
+      },{
         path: 'forgot-password',
         component: ForgotPasswordComponent,
-        data: {
-          title: 'Forgot Password'
-        }
-      },
-      {
+        data: { title: 'Forgot Password' }
+      },{
         path: 'reset-password',
         component: ResetPasswordComponent,
-        data: {
-          title: 'Reset Password'
-        }
-      },
-      {
-        path: 'lock-screen',
-        component: LockScreenComponent,
-        data: {
-          title: 'Lock Screen'
-        }
-      },
-      {
+        data: { title: 'Reset Password' }
+      },{
+        path: 'detalle',
+        component: CorreoConfirmadoComponent,
+        data: { title: 'Correo Confirmado' }
+      },{
         path: 'validtions',
         component: ValidtionsComponent,
-        data: {
-          title: 'Validacion'
-        }
+        data: { title: 'Validacion' }
       }
     ]
   }
