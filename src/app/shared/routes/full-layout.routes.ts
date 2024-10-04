@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { ProveedoresModule } from '../../proveedores/proveedores.module';
 
 
 //Route for content layout with sidebar, navbar and footer.
@@ -37,6 +38,9 @@ export const Full_ROUTES: Routes = [
     }, {
         path: 'admin',
         loadChildren: () => import('../../admin/admin.module').then(m => m.AdminModule)
+    }, {
+        path: 'proveedores',
+        loadChildren: () => import('../../proveedores/proveedores.module').then(m => m.ProveedoresModule)
     }, {
         path: 'components',
         loadChildren: () => import('../../components/components.module').then(m => m.ComponentsModule)

@@ -17,19 +17,24 @@ export const ROUTES: RouteInfo[] = [
         submenu: [
             { path: '/admin/projectos', title: 'Proyectos', icon: 'bx bx-right-arrow-alt', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
             { path: '/admin/item', title: 'Item', icon: 'bx bx-right-arrow-alt', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
-            { path: '/admin/cotizaciones', title: 'Cotizaicones enviadas', icon: 'bx bx-right-arrow-alt', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+            { path: '/admin/cotizaciones', title: 'Cotizaciones enviadas', icon: 'bx bx-right-arrow-alt', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+            { path: '/admin/usuarios', title: 'Usuarios', icon: 'bx bx-right-arrow-alt', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+        ]
+    }, {
+        path: '', title: 'Proveedores', icon: 'bx bx-repeat', class: 'sub', badge: '', badgeClass: '', isExternalLink: false,
+        submenu: [
+            { path: '/proveedores/perfil', title: 'Perfil', icon: 'bx bx-right-arrow-alt', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+            { path: '/proveedores/capacidad', title: 'Capacidades', icon: 'bx bx-right-arrow-alt', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },            
         ]
     }, {
         path: '', title: 'Pantallas Registro', icon: 'bi bi-lock', class: 'sub', badge: '', badgeClass: '', isExternalLink: false,
         submenu: [
             { path: '/auth/sign-in', title: 'Iniciar sesion', icon: 'bx bx-right-arrow-alt', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
             { path: '/auth/sign-up', title: 'Registro', icon: 'bx bx-right-arrow-alt', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
-            { path: '/auth/signin-with-header-footer', title: 'Iniciar sesión c/encabezado y pPg', icon: 'bx bx-right-arrow-alt', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
-            { path: '/auth/signup-with-header-footer', title: 'Regístro c/encabezado y pPg', icon: 'bx bx-right-arrow-alt', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
             { path: '/auth/forgot-password', title: 'Forgot Password', icon: 'bx bx-right-arrow-alt', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
             { path: '/auth/reset-password', title: 'Reiniciar Password', icon: 'bx bx-right-arrow-alt', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
-            { path: '/auth/lock-screen', title: 'Lock Screen', icon: 'bx bx-right-arrow-alt', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
-            { path: '/auth/validtions', title: 'Confirmacion', icon: 'bx bx-right-arrow-alt', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
+            { path: '/auth/validtions', title: 'Admin autorizaciones', icon: 'bx bx-right-arrow-alt', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
+            { path: '/auth/detalle', title: 'Correo confirmado', icon: 'bx bx-right-arrow-alt', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
         ]
     },
     {
@@ -39,6 +44,6 @@ export const ROUTES: RouteInfo[] = [
     }, {
         path: '', title: 'Preguntas frecuentes', icon: 'lni lni-question-circle', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: []
     }, {
-        path: 'dashboard/eCommerce', title: 'v.25/9/24', icon: 'bi bi-headset', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: []
+        path: 'dashboard/eCommerce', title: 'v.2/10/24', icon: 'bi bi-headset', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: []
     },
 ];
